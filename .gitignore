@@ -351,3 +351,9 @@ MigrationBackup/
 
 # Virtual Environment
 venv/
+
+# Audio file 
+*/audio/*
+
+# Code file
+*/code/*
