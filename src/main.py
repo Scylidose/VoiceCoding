@@ -29,15 +29,33 @@ def write_code(text):
     f.write(text)
     f.close()
 
+import subprocess 
+
 def execute_code():
     path = os.path.join(pathlib.Path(__file__).parent.resolve(), "code", "code.py")
     os.system('python ' + path)
+    output = subprocess.check_output('python ' + path,  shell=True)
+    
+    return output.decode("utf-8") 
+
+def translate_to_code(audio):
+    code_to_write = ""
+    statements = audio.split()
+    
+    for i in range(0, statements):
+        if statements[i] == "for":
+            code_to_write += "for"
+
+        if statements[i] == "if":
+            code_to_write += "if"
+
+    return code_to_write
 
 write_code("for i in range(2): print(\"foo\"); print(\"bar\")")
-execute_code()
-# text = get_audio()
 
-text = "hi"
+text = get_audio()
 
-if "hello" in text:
-    speak("Hello world!")
+if text == "show result":
+    speak(execute_code())
+else: 
+    translate_to_code(text)
