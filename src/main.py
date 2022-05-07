@@ -21,6 +21,20 @@ def get_audio():
         except Exception as e:
             print("Exception: " + str(e))
 
+    return said.lower()
+
+def get_audio_from_source(filename):
+    r = sr.Recognizer()
+    with sr.AudioFile(filename) as source:
+        audio_data = r.record(source)
+        said = ""
+
+        try:
+            said = r.recognize_google(audio_data)
+            print(said)
+        except Exception as e:
+            print("Exception: " + str(e))
+
     return said
 
 def write_code(text):
@@ -41,21 +55,34 @@ def execute_code():
 def translate_to_code(audio):
     code_to_write = ""
     statements = audio.split()
-    
-    for i in range(0, statements):
-        if statements[i] == "for":
-            code_to_write += "for"
+    index = 0
 
-        if statements[i] == "if":
-            code_to_write += "if"
-
+    if statements[0] == "add":
+        if statements[1] == "function":
+            code_to_write += statements[2] + "("
+            for param in range(3, len(statements)):
+                param_type = "string"
+                param_value = ""
+                if statements[param] == "type":
+                    param_type = statements[param-1]
+                if statements[param] == "equal":
+                    
+                    for value in range(param+1, len(statements)):
+                        param_value += statements[value] + " "
+                    if param_type == "string":
+                        code_to_write += "\""+param_value+"\""
+            code_to_write += ")"
     return code_to_write
 
-write_code("for i in range(2): print(\"foo\"); print(\"bar\")")
+# write_code("for i in range(2): print(\"foo\"); print(\"bar\")")
 
-text = get_audio()
-
-if text == "show result":
-    speak(execute_code())
-else: 
-    translate_to_code(text)
+# text = get_audio()
+text = get_audio_from_source("src/audio/first_use_case.wav")
+text = "add function print with parameters string type equal hello world"
+print("TRANSLATE TO CODE : " + translate_to_code(text))
+write_code(translate_to_code(text))
+print("RESULTED CODE : " + execute_code())
+# if text == "show result":
+#     speak(execute_code())
+# else: 
+#     print(translate_to_code(text))
