@@ -92,3 +92,11 @@ python3 -m venv venv
 ```bash
 pip install -r requirements.txt
 ```
+
+## Unit Test 
+
+To execute every test and ensure the proper functioning of the application, you can execute at the root of the project, the shell command : 
+
+```bash
+pytest
+```
