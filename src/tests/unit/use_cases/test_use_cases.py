@@ -15,3 +15,14 @@ class TestUseCases(unittest.TestCase):
         expected_result = "hello world"
 
         assert result == expected_result
+
+    def test_second_use_case(self):
+        # text = speech_recognizer.get_audio_from_source("src/voicecoding/audio/second_use_case.wav")
+        text = "add variable lorem with string type equal hello add variable ispum with float type equal eight point 9"
+
+        code_executor.write_code(code_executor.translate_to_code(text))
+
+        result = code_executor.execute_code().strip()
+        expected_result = "lorem = \"hello\"\nipsum = 8.9"
+
+        assert result == expected_result

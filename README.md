@@ -8,7 +8,7 @@
 
 ```python
 
-print("Hello world")
+print("hello world")
 
 ```
 
@@ -16,8 +16,7 @@ print("Hello world")
 
 ```python
 
-lorem = "Hello"
-
+lorem = "hello"
 ipsum = 8.9
 
 ```
@@ -27,9 +26,8 @@ ipsum = 8.9
 ```python
 
 count = 2
-
 if count < 5:
-    print("Count is inferior to five")
+    print("count is inferior to five")
 
 ```
 
@@ -38,11 +36,10 @@ if count < 5:
 ```python
 
 count = 2
-
 if count < 5:
-    print("Count is inferior to five")
+    print("count is inferior to five")
 else:
-    print("Count is superior to five")
+    print("count is superior to five")
 
 ```
 
@@ -51,11 +48,9 @@ else:
 ```python
 
 count = 0
-
 for i in range(0, 5):
     count += 1
-
-print("The sum of numbers between 0 and 5 is ", count)    
+print("the sum of numbers between 0 and 5 is ", count)    
 
 ```
 
@@ -64,12 +59,10 @@ print("The sum of numbers between 0 and 5 is ", count)
 ```python
 
 count = 0
-
 for i in range(0, 5):
     if count < 4:
         count += 1
-
-print("The sum of numbers between 0 and 3 is ", count)    
+print("the sum of numbers between 0 and 3 is ", count)    
 
 ```
 
